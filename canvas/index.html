@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/hitPix.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.js"></script>
+    <script>
+        $(function(){
+            var clientW=document.documentElement.clientWidth;
+            var clientH=document.documentElement.clientHeight;
+             var canvas=document.querySelector("canvas");
+//            var cobj=canvas.getContext("2d");
+            canvas.width=clientW;
+            canvas.height=clientH;
+             var running=document.querySelectorAll(".run");
+             var jumps=document.querySelectorAll(".jump");
+             var hinders=document.querySelectorAll(".hinder");
+             var scores=$(".score");
+             var start=$(".start");
+             var mask=$(".mask");
+             var end=$(".end");
+             var lifes=$(".life");
+             var cobj=canvas.getContext("2d");
+            $(".startbtn").one("click",function(){
+                var gameobj=new game(canvas,cobj,running,jumps,hinders,scores,lifes);
+                gameobj.play(start,mask,end);
+            })
+            $(".endbtn").one("click",function(){
+                location.reload();
+            })
+        })
+    </script>
+</head>
+<body>
+
+<div class="start">
+    超级跑酷
+    <br>
+    <button type="button" class="btn btn-success startbtn">开始游戏</button>
+
+</div>
+<div class="end">
+    游戏结束
+    GAME OVER!
+    <br>
+    <button type="button" class="btn btn-success endbtn">重新开始</button>
+</div>
+<div class="mask"></div>
+<canvas>
+
+</canvas>
+<div class="scorebox">分数：<div class="score">0</div></div>
+<div class="lifebox">生命值:<div class="life">5</div></div>
+<img src="img/a.png" alt="" class="run" hidden>
+<img src="img/b.png" alt="" class="run" hidden>
+<img src="img/c.png" alt="" class="run" hidden>
+<img src="img/d.png" alt="" class="run" hidden>
+<img src="img/a.png" alt="" class="jump" hidden>
+
+
+<!--障碍物-->
+<img src="img/z1.png" alt="" class="hinder" hidden>
+<img src="img/z2.png" alt="" class="hinder" hidden>
+<img src="img/z3.png" alt="" class="hinder" hidden>
+<img src="img/z4.png" alt="" class="hinder" hidden>
+<img src="img/z5.png" alt="" class="hinder" hidden>
+<img src="img/z6.png" alt="" class="hinder" hidden>
+<img src="img/z7.png" alt="" class="hinder" hidden>
+<img src="img/z8.png" alt="" class="hinder" hidden>
+<!--子弹-->
+<!--<img src="" alt="" class="zidan" hiddem>-->
+</body>
+</html>
